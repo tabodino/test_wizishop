@@ -1,0 +1,23 @@
+wizishop_core_homepage:
+    path:     /
+    defaults: { _controller: WizishopCoreBundle:Core:index }
+
+wizishop_core_product:
+    path:     /product/{id}
+    defaults: { _controller: WizishopCoreBundle:Core:viewProduct }
+    requirements:
+        id: \d+
+
+wizishop_core_add:
+    path:     /add/{id}
+    defaults: { _controller: WizishopCoreBundle:Core:addCart }
+    requirements:
+        id: \d+
+
+wizishop_core_cart:
+    path:     /cart
+    defaults: { _controller: WizishopCoreBundle:Core:viewCart }
+
+wizishop_core_remove:
+    path:     /remove/{id}
+    defaults: { _controller: WizishopCoreBundle:Core:removeFromCart }

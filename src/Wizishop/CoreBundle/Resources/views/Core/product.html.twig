@@ -1,0 +1,62 @@
+{% extends "WizishopCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    Détail Produit - {{ parent() }}
+{% endblock title%}
+
+{% block body %}
+    <div id="blue">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h4>DETAIL DU PRODUIT {{ product.id }}</h4>
+                    <p>IL EN RESTE {{ product.quantity }} EN STOCK</p>
+                </div>
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!--  bluewrap -->
+
+    <div class="container desc">
+        <div class="row">
+            <br><br>
+            <div class="col-lg-6 centered">
+                <img src="{{ asset('bundles/wizishopcore/img/'~product.thumb) }}" alt="{{ product.title }}">
+                <br>
+                <h4>{{ product.price }} €</h4>
+            </div><!-- col-lg-6 -->
+            <div class="col-lg-6">
+                <h4>{{ product.title|upper }}</h4>
+                <p>{{ product.description }}</p>
+
+                <p><i class="fa fa-circle-o"></i>{{ product.category }}</p>
+                <p><i class="fa fa-circle-o"></i>{{ product.price }} €</p>
+
+                <form action="{{ path('wizishop_core_add', {'id': product.id}) }}" method="GET">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label>Choisissez la quantité :</label>
+                            </div>
+                            <div class="col-lg-2">
+
+                                <select name="quantity" class="form-control">
+                                    {% for i in 1..product.quantity %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Ajouter au panier" class="btn btn-lg btn-primary">
+                </form>
+                <br>
+                <a href="{{ path('wizishop_core_homepage') }}" class="btn btn-lg btn-info">Retour à la liste des produits</a>
+                <br><br>
+            </div>
+        </div><!-- row -->
+
+    </div><!-- container -->
+
+
+{% endblock body %}

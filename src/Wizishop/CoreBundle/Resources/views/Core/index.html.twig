@@ -1,0 +1,44 @@
+{% extends "WizishopCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    Produits - {{ parent() }}
+{% endblock title%}
+
+{% block body %}
+
+
+
+    <!-- PRICING SECTION -->
+    <div id="dg">
+        <div class="container">
+            <div class="row centered">
+                <h4>LISTE DES PRODUITS</h4>
+                <br>
+
+                    <!-- START PRICING TABLE -->
+                    {% for product in products %}
+                        <div class="col-lg-4">
+                            <div class="pricing-option">
+                                <div class="pricing-top">
+                                    <span class="special-label">{{ product.title }}</span>
+                                    <span class="pricing-edition"><img src="{{ asset('bundles/wizishopcore/img/'~product.thumb) }}" alt="{{ product.title }}" ></span>
+                                </div>
+                                <ul>
+                                    <li><h3>{{ product.price }} €</h3></li>
+                                    <li>Catégorie : <strong>{{ product.category }}</strong> </li>
+                                    <li>Quantité : <strong>{{ product.quantity }}</strong></li>
+                                </ul>
+                                <a href="{{ path('wizishop_core_product', { 'id': product.id}) }}" class="pricing-signup">Voir</a>
+                            </div><!-- /pricing-option -->
+                        </div>
+                    {% endfor %}
+
+                    <!-- END PRICING TABLE -->
+
+
+            </div><!-- row -->
+        </div><!-- container -->
+    </div><!-- DG -->
+
+
+{% endblock body %}

@@ -1,0 +1,3 @@
+wizishop_core:
+    resource: "@WizishopCoreBundle/Resources/config/routing.yml"
+    prefix:   /
